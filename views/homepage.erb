@@ -1,0 +1,9 @@
+<h1></h1>
+
+<ul>
+<% @dkeys.keys.each do |symbol| %>
+
+    <li><a href="/<%= symbol %>">Convert 1 <%= symbol %>...</a></li>
+
+<% end %>
+</ul>
