@@ -3,7 +3,7 @@ require "sinatra/reloader"
 require "http"
 
 get("/") do
-  @data = HTTP.get("https://api.exchangerate.host/list?access_key=98b3818c779196980fc28a692dbb5f64")
+  @data = HTTP.get("https://api.exchangerate.host/list?access_key=#{ENV.fetch("TE").chomp}")
 
   @dstring = @data.to_s
 
@@ -15,7 +15,15 @@ end
 
 get("/:country") do
 
+  @data = HTTP.get("https://api.exchangerate.host/list?access_key=#{ENV.fetch("TE")}")
+
   @code = params.fetch("country")
+
+  @dstring = @data.to_s
+
+  @dparsed = JSON.parse(@dstring)
+
+  @dkeys = @dparsed.fetch("currencies")
 
   erb(:convert)
 

@@ -5,5 +5,9 @@
 <a href="/">Go Back</a>
 
 <ul>
-   <%= params %>
+<% @dkeys.keys.each do |symbol| %>
+
+    <li><a href="/<%= symbol %>">Convert 1 <%= symbol %>...</a></li>
+
+<% end %>
 </ul>
