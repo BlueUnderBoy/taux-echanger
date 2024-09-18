@@ -3,8 +3,8 @@ require "sinatra/reloader"
 require "http"
 
 get("/") do
-  access_key = ENV.fetch("TE").chomp
-  @data = HTTP.get("https://api.exchangerate.host/list?access_key=#{access_key.strip}")
+  access_key = ENV.fetch("TE").strip
+  @data = HTTP.get("https://api.exchangerate.host/list?access_key=#{access_key}")
 
   @dstring = @data.to_s
 
