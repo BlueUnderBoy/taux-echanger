@@ -4,7 +4,7 @@ require "http"
 
 get("/") do
   access_key = ENV.fetch("TE").chomp
-  @data = HTTP.get("https://api.exchangerate.host/list?access_key=#{access_key}")
+  @data = HTTP.get("https://api.exchangerate.host/list?access_key=#{access_key.strip}")
 
   @dstring = @data.to_s
 
