@@ -7,7 +7,7 @@
 <ul>
 <% @dkeys.keys.each do |symbol| %>
 
-    <li><a href="/<%= symbol %>">Convert 1 <%= @code %> to <%= symbol %>... </a></li>
+    <li><a href="/<%= @code %>/<%= symbol %>">Convert 1 <%= @code %> to <%= symbol %>... </a></li>
 
 <% end %>
 </ul>

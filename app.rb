@@ -30,3 +30,18 @@ get("/:country") do
   erb(:convert)
 
 end
+
+get("/:from/:to") do 
+  @from = params.fetch("from")
+  @to = params.fetch("to")
+
+  @mdata = HTTP.get("https://api.exchangerate.host/convert?from=#{@from}&to=#{@to}&amount=1&access_key=#{access_key}")
+
+  @mdstring = @mdata.to_s
+  
+  @mdparsed = JSON.parse(@mdstring)
+
+  @mdvalue = @mdparsed["result"]
+
+  erb(:conversion)
+end
