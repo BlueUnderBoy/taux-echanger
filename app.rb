@@ -35,6 +35,7 @@ get("/:from/:to") do
   @from = params.fetch("from")
   @to = params.fetch("to")
 
+  access_key = ENV.fetch("TE").strip
   @mdata = HTTP.get("https://api.exchangerate.host/convert?from=#{@from}&to=#{@to}&amount=1&access_key=#{access_key}")
 
   @mdstring = @mdata.to_s
