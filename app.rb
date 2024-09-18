@@ -16,7 +16,8 @@ end
 
 get("/:country") do
 
-  @data = HTTP.get("https://api.exchangerate.host/list?access_key=#{ENV.fetch("TE")}")
+  access_key = ENV.fetch("TE").strip
+  @data = HTTP.get("https://api.exchangerate.host/list?access_key=#{access_key}")
 
   @code = params.fetch("country")
 
